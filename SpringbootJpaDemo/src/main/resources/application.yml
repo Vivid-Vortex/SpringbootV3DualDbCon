@@ -1,0 +1,47 @@
+#For H2 database
+#spring:
+#  datasource:
+#    driver-class-name: org.h2.Driver
+#    password: password
+#    url: jdbc:h2:mem:dev
+#    username: sa
+#  jpa:
+#    properties:
+#      hibernate:
+#        format_sql: true
+#    show-sql: true
+#    open-in-view: false
+#    hibernate: #TODO Play with all these ddl-auto types
+#      ddl-auto: none #none means hibernate will not deal with table creation deletion, alternation activities. we need to do manually
+#      ddl-auto: create-only # Hibernate will generate database schema from the entity model
+#    ddl-auto: drop #Hibernate will be able to drop the database schema using the entity model. Only the tables which corresponds to entity will only be deleted
+#    ddl-auto: create #Hibernate will be able to drop the database schema and recreate it afterward using the entity model as a reference.
+#    ddl-auto: create-drop # drop database schema and recreate it afterward using the entity model as a reference. And, upon closing the JPA EntityManagerFactory or the Hibernate sessionFactory, the database schema will be dropped again.
+#    ddl-auto: validate #Hibernate will validate the underlying database schema against the entity mappings.
+#    ddl-auto: update #Hibernate will alter the database tables per entity mapping changes and not other changes, just update.
+
+# Dialect is important sometimes because hibernate will generate that particular database specific queries behind the scene.
+
+#spring:
+#    datasource:
+#        #    driver-class-name: #It will be provided by Spring-data-Jpa behind the scene from mysql connector jar provided in the build.gradle file. But if you have a specific driver requirement, you can add it within the datasource configuration block.
+#        password: Admin@12345
+#        url: jdbc:mysql://localhost:3306/ecommerce?allowPublicKeyRetrieval=true&useSSL=false
+#        username: root
+#    jpa:
+#        properties:
+#            hibernate:
+#                format_sql: true
+#        show-sql: true #to see the ddl statements, you must use ddl-auto type as somethign which does ddl commands such as create-drop. It won't work with update. Signe it is not dealing with ddl commands.
+#        open-in-view: false
+#        hibernate:
+#            ddl-auto: update
+
+logging:
+    level:
+        org.hibernate.sql: DEBUG
+
+spring:
+    main:
+        allow-circular-references: true
+        allow-bean-definition-overriding: true
